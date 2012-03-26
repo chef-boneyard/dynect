@@ -19,11 +19,11 @@
 #
 
 # Set these attributes in your role or node.
-# set[:dynect][:customer] = ""
-# set[:dynect][:username] = ""
-# set[:dynect][:password] = ""
-# set[:dynect][:zone] = ""
-# set[:dynect][:domain] = ""
+# set['dynect']['customer'] = ""
+# set['dynect']['username'] = ""
+# set['dynect']['password'] = ""
+# set['dynect']['zone'] = ""
+# set['dynect']['domain'] = ""
 #
-# set[:dynect][:ec2][:type] = "ec2"
-# set[:dynect][:ec2][:env]  = "prod"
+# set['dynect']['ec2']['type'] = "ec2"
+# set['dynect']['ec2']['env']  = "prod"

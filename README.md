@@ -78,10 +78,10 @@ Example:
       record_type "A"
       rdata({"address" => "10.1.1.10"})
       fqdn "webprod.#{node.dynect.domain}"
-      customer node[:dynect][:customer]
-      username node[:dynect][:username]
-      password node[:dynect][:password]
-      zone     node[:dynect][:zone]
+      customer node['dynect']['customer']
+      username node['dynect']['username']
+      password node['dynect']['password']
+      zone     node['dynect']['zone']
     end
 
 RECIPES

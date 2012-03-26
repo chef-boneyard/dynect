@@ -20,10 +20,10 @@
 include_recipe 'dynect'
 
 # "i-17734b7c.example.com" => ec2.public_hostname
-dynect_rr node[:ec2][:instance_id] do
+dynect_rr node['ec2']['instance_id'] do
   record_type "CNAME"
-  fqdn "#{node[:ec2][:instance_id]}.#{node["dynect"]["domain"]}"
-  rdata({ "cname" => "#{node[:ec2][:public_hostname]}." })
+  fqdn "#{node['ec2']['instance_id']}.#{node["dynect"]["domain"]}"
+  rdata({ "cname" => "#{node['ec2']['public_hostname']}." })
   customer node["dynect"]["customer"]
   username node["dynect"]["username"]
   password node["dynect"]["password"]
@@ -37,7 +37,7 @@ new_fqdn = "#{new_hostname}.#{node["dynect"]["domain"]}"
 dynect_rr new_hostname do
   record_type "CNAME"
   fqdn new_fqdn
-  rdata({ "cname" => "#{node[:ec2][:public_hostname]}." })
+  rdata({ "cname" => "#{node['ec2']['public_hostname']}." })
   customer node["dynect"]["customer"]
   username node["dynect"]["username"]
   password node["dynect"]["password"]

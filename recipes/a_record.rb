@@ -19,13 +19,13 @@
 
 include_recipe 'dynect'
 
-dynect_rr node[:hostname] do
+dynect_rr node['hostname'] do
   record_type "A"
-  rdata({ "address" => node[:ipaddress] })
-  fqdn "#{node[:hostname]}.#{node[:dynect][:domain]}"
-  customer node[:dynect][:customer]
-  username node[:dynect][:username]
-  password node[:dynect][:password]
-  zone     node[:dynect][:zone]
+  rdata({ "address" => node['ipaddress'] })
+  fqdn "#{node['hostname']}.#{node['dynect']['domain']}"
+  customer node['dynect']['customer']
+  username node['dynect']['username']
+  password node['dynect']['password']
+  zone     node['dynect']['zone']
   action :update
 end
