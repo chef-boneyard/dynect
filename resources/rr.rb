@@ -28,3 +28,8 @@ attribute :username, :kind_of => String
 attribute :password, :kind_of => String
 attribute :customer, :kind_of => String
 attribute :zone, :kind_of => String
+
+def initialize(*args)
+  super
+  @action = :create
+end
