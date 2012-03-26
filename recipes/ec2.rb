@@ -67,7 +67,7 @@ execute "hostname --file /etc/hostname" do
 end
 
 file "/etc/hostname" do
-  content "#{new_hostname}"
+  content new_hostname
   notifies :run, resources(:execute => "hostname --file /etc/hostname"), :immediately
 end
 
