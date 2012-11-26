@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-# Install dynect for use with Chef recipes
+# Install dynect gem for usage within Chef runs
 chef_gem "dynect_rest" do
   action :install
 end
