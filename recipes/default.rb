@@ -17,10 +17,7 @@
 # limitations under the License.
 #
 
-# Install dynect in advance
-r = gem_package "dynect_rest" do
-  action :nothing
+# Install dynect for use with Chef recipes
+chef_gem "dynect_rest" do
+  action :install
 end
-r.run_action(:upgrade)
-require 'rubygems'
-Gem.clear_paths
