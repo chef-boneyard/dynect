@@ -57,7 +57,7 @@ end
 ruby_block "edit etc hosts" do
   block do
     rc = Chef::Util::FileEdit.new("/etc/hosts")
-    rc.search_file_replace_line(/^127\.0\.0\.1 localhost$/, "127.0.0.1 #{new_fqdn} #{new_hostname} localhost")
+    rc.search_file_replace_line(/^127\.0\.0\.1\s+localhost.*$/, "127.0.0.1 #{new_fqdn} #{new_hostname} localhost")
     rc.write_file
   end
 end
