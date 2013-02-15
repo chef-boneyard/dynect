@@ -10,7 +10,7 @@ Chef 0.8+.
 
 A Dynect account.
 
-The `dynect_rest` gem. The `dynect::default` recipe installs this gem from gemcutter.
+The `dynect_rest` gem. The `dynect::default` recipe installs this gem from http://rubygems.org
 
 Works on any platform Chef runs on that can install gems from Rubygems.org.
 
@@ -101,7 +101,7 @@ ec2
 
 The `dynect::ec2` recipe provides an example of working with the Dyn API with EC2 instances. It creates CNAME records based on the EC2 instance ID (`node.ec2.instance_id`), and a constructed hostname from the dynect.ec2 attributes.
 
-The recipe also edits resolv.conf to search compute-1.internal and the dynect.domain and use dynect.domain as the default domain, and it will set the nodes hostname per the DNS settings.
+The recipe also edits `/etc/resolv.conf` to search `compute-1.internal` and the dynect.domain and use dynect.domain as the default domain, and it will set the nodes hostname per the DNS settings.
 
 a_record
 --------
@@ -124,7 +124,7 @@ LICENSE AND AUTHOR
 ==================
 
 - Author: Adam Jacob (<adam@opscode.com>)
-- Copyright: 2010, Opscode, Inc.
+- Copyright: 2010-2013, Opscode, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
