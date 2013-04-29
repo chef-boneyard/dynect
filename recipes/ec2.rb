@@ -20,10 +20,10 @@
 include_recipe 'dynect'
 
 # "i-17734b7c.example.com" => ec2.public_hostname
-dynect_rr node[:ec2][:instance_id] do
+dynect_rr node["ec2"]["instance_id"] do
   record_type "CNAME"
-  fqdn "#{node[:ec2][:instance_id]}.#{node["dynect"]["domain"]}"
-  rdata({ "cname" => "#{node[:ec2][:public_hostname]}." })
+  fqdn "#{node["ec2"]["instance_id"]}.#{node["dynect"]["domain"]}"
+  rdata({ "cname" => "#{node["ec2"]["public_hostname"]}." })
   customer node["dynect"]["customer"]
   username node["dynect"]["username"]
   password node["dynect"]["password"]
@@ -37,7 +37,7 @@ new_fqdn = "#{new_hostname}.#{node["dynect"]["domain"]}"
 dynect_rr new_hostname do
   record_type "CNAME"
   fqdn new_fqdn
-  rdata({ "cname" => "#{node[:ec2][:public_hostname]}." })
+  rdata({ "cname" => "#{node["ec2"]["public_hostname"]}." })
   customer node["dynect"]["customer"]
   username node["dynect"]["username"]
   password node["dynect"]["password"]
@@ -57,7 +57,7 @@ end
 ruby_block "edit etc hosts" do
   block do
     rc = Chef::Util::FileEdit.new("/etc/hosts")
-    new_hosts_entry = "#{node['ec2']['local_ipv4']} #{new_fqdn} #{new_hostname}"
+    new_hosts_entry = "#{node["ec2"]["local_ipv4"]} #{new_fqdn} #{new_hostname}"
     rc.insert_line_if_no_match(new_hosts_entry, new_hosts_entry)
     rc.write_file
   end
@@ -68,8 +68,8 @@ execute "hostname --file /etc/hostname" do
 end
 
 file "/etc/hostname" do
-  content "#{new_hostname}"
-  notifies :run, resources(:execute => "hostname --file /etc/hostname"), :immediately
+  content new_hostname
+  notifies :run, "execute[hostname --file /etc/hostname]", :immediately
 end
 
 node.automatic_attrs["hostname"] = new_hostname
