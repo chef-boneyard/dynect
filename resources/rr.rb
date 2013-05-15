@@ -28,3 +28,5 @@ attribute :username, :kind_of => String
 attribute :password, :kind_of => String
 attribute :customer, :kind_of => String
 attribute :zone, :kind_of => String
+
+default_action :create
