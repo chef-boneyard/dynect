@@ -57,7 +57,7 @@ end
 ruby_block "edit etc hosts" do
   block do
     rc = Chef::Util::FileEdit.new("/etc/hosts")
-    new_hosts_entry = "#{node['ec2']['local_ipv4']} #{new_fqdn} #{new_hostname}"
+    new_hosts_entry = "#{node["ec2"]["local_ipv4"]} #{new_fqdn} #{new_hostname}"
     rc.insert_line_if_no_match(new_hosts_entry, new_hosts_entry)
     rc.write_file
   end
