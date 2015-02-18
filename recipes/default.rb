@@ -19,6 +19,6 @@
 
 # Install dynect gem for usage within Chef runs
 chef_gem "dynect_rest" do
-  compile_time true
+  compile_time true if respond_to?(:compile_time)
   action :install
 end
