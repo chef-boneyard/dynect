@@ -1,14 +1,20 @@
-## v1.0.4:
+dynect
+======
 
-### Improvement
+v1.0.6 (2015-02-17)
+-------------------
+- Being explicit about usage of the chef_gem's compile_time property.
+- Eliminating future deprecation warnings in Chef 12.1.0.
 
+v1.0.4
+------
 - [COOK-2382]: dynect: foodcritic style change
 
-## v1.0.2:
-
-* [COOK-2381] - dynect: /etc/hosts entry does not get updated on
+v1.0.2
+------
+- [COOK-2381] - dynect: /etc/hosts entry does not get updated on
   Amazon Linux due to regex mismatch
 
-## v1.0.0:
-
-* [COOK-1958] - use `chef_gem` for runtime gem requirement
+v1.0.0
+------
+- [COOK-1958] - use `chef_gem` for runtime gem requirement
