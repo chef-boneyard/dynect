@@ -2,7 +2,7 @@
 # Cookbook Name:: dynect
 # Recipe:: default
 #
-# Copyright:: 2010, Opscode, Inc <legal@opscode.com>
+# Copyright:: 2010-2015, Chef Software, Inc <legal@chef.io>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,5 +19,6 @@
 
 # Install dynect gem for usage within Chef runs
 chef_gem "dynect_rest" do
+  compile_time true
   action :install
 end
