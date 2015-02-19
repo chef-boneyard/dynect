@@ -1,6 +1,10 @@
 dynect
 ======
 
+v1.0.9 (2015-02-18)
+-------------------
+- Reverting chef_gem compile_time work
+
 v1.0.8 (2015-02-18)
 -------------------
 - Fixing chef_gem with Chef::Resource::ChefGem.method_defined?(:compile_time)
