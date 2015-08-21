@@ -1,5 +1,6 @@
 dynect
 ======
+This file is used to list changes made in each version of the dynect cookbook.
 
 v1.0.9 (2015-02-18)
 -------------------
