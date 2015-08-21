@@ -51,14 +51,14 @@ def action_create
     rr.save
     @dyn.publish
     Chef::Log.info("Added #{@new_resource} to dynect")
-		new_resource.updated_by_last_action(true)
+    new_resource.updated_by_last_action(true)
   end
 end
 
 def action_update
   if @rr
     changed = false
-    if (@new_resource.ttl && @rr.ttl != @new_resource.ttl)
+    if @new_resource.ttl && @rr.ttl != @new_resource.ttl
       @rr.ttl(@new_resource.ttl)
       Chef::Log.info("Changing #{@new_resource} ttl from #{@rr.ttl} to #{@new_resource.ttl}")
       changed = true

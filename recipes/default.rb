@@ -18,6 +18,6 @@
 #
 
 # Install dynect gem for usage within Chef runs
-chef_gem "dynect_rest" do
+chef_gem 'dynect_rest' do
   action :install
 end
