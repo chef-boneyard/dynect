@@ -43,7 +43,7 @@ def load_current_resource
 end
 
 def action_create
-  unless @rr
+  unless @rr # rubocop: disable Style/GuardClause
     rr = DynectRest::Resource.new(@dyn, @new_resource.record_type, @new_resource.zone)
     rr.fqdn(@new_resource.fqdn)
     rr.ttl(@new_resource.ttl) if @new_resource.ttl
@@ -91,7 +91,7 @@ def action_replace
 end
 
 def action_delete
-  if @rr
+  if @rr # rubocop: disable Style/GuardClause
     @rr.delete
     @dyn.publish
     Chef::Log.info("Deleted #{@new_resource} from dynect")
