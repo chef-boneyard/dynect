@@ -7,20 +7,25 @@ dynect Cookbook
 
 Automatically configures system DNS using Dyn's API.
 
-REQUIREMENTS
-============
+Requirements
+------------
+#### Platforms
+- All platforms supported by Chef
 
-Chef 0.8+.
+#### Chef
+- Chef 11+
+
+#### Cookbooks
+- none
+
 
 A Dynect account.
 
 The `dynect_rest` gem. The `dynect::default` recipe installs this gem from http://rubygems.org
 
-Works on any platform Chef runs on that can install gems from Rubygems.org.
 
-ATTRIBUTES
-==========
-
+Attributes
+----------
 The following attributes need to be set either in a role or on a node directly, they are not set at the cookbook level:
 
 * dynect.customer - Customer ID
@@ -47,10 +52,9 @@ EC2 specific attributes:
 * dynect.ec2.env - logical application environment the system is in. Default is 'prod'.
 
 RESOURCES
-=========
+---------
 
-rr
---
+###rr
 
 DNS Resource Record.
 
@@ -89,17 +93,15 @@ Example:
     end
 
 RECIPES
-=======
+-------
 
 This cookbook provides the following recipes.
 
-default
--------
+###default
 
 The default recipe installs Adam Jacob's `dynect_rest` gem during the Chef run's compile time to ensure it is available in the same run as utilizing the `dynect_rr` resource/provider.
 
-ec2
----
+###ec2
 
 **Only use this recipe on Amazon AWS EC2 hosts!**
 
@@ -107,13 +109,12 @@ The `dynect::ec2` recipe provides an example of working with the Dyn API with EC
 
 The recipe also edits `/etc/resolv.conf` to search `compute-1.internal` and the dynect.domain and use dynect.domain as the default domain, and it will set the nodes hostname per the DNS settings.
 
-a_record
---------
+###a_record
 
 The `dynect::a_record` recipe will create an `A` record for the node using the detected hostname and IP address from `ohai`.
 
 FURTHER READING
-===============
+---------------
 
 Information on the Dynect API:
 
@@ -124,13 +125,14 @@ Dynect REST Ruby Library:
 * [Gem](http://rubygems.org/gems/dynect_rest)
 * [Code](http://github.com/adamhjk/dynect_rest)
 
-LICENSE AND AUTHOR
-==================
 
-- Author: Adam Jacob (<adam@opscode.com>)
-```text
-- Copyright: 2010-2015, Chef Software, Inc
+License & Authors
+-----------------
 
+**Author:** Cookbook Engineering Team (<cookbooks@chef.io>)
+
+**Copyright:** 2008-2015, Chef Software, Inc.
+```
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
