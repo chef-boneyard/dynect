@@ -2,7 +2,7 @@
 # Cookbook Name:: dynect
 # Provider:: rr
 #
-# Copyright:: 2010, Chef Software, Inc <legal@chef.io>
+# Copyright:: 2010-2015, Chef Software, Inc <legal@chef.io>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ def load_current_resource
     @current_resource.ttl(@rr.ttl)
     @current_resource.zone(@rr.zone)
     @current_resource.rdata(@rr.rdata)
-  rescue DynectRest::Exceptions::RequestFailed => e
+  rescue DynectRest::Exceptions::RequestFailed
     Chef::Log.debug("Cannot find resource #{@new_resource} at Dynect")
   end
 end
