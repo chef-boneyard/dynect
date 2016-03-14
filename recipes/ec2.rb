@@ -18,15 +18,18 @@
 #
 
 include_recipe 'dynect'
+extend Dynect::Helper
+
+creds = get_credentials
 
 # "i-17734b7c.example.com" => ec2.public_hostname
 dynect_rr node['ec2']['instance_id'] do
   record_type 'CNAME'
   fqdn "#{node['ec2']['instance_id']}.#{node['dynect']['domain']}"
   rdata('cname' => "#{node['ec2']['public_hostname']}.")
-  customer node['dynect']['customer']
-  username node['dynect']['username']
-  password node['dynect']['password']
+  customer creds['customer']
+  username creds['username']
+  password creds['password']
   zone node['dynect']['zone']
   action :update
 end
@@ -38,9 +41,9 @@ dynect_rr new_hostname do
   record_type 'CNAME'
   fqdn new_fqdn
   rdata('cname' => "#{node['ec2']['public_hostname']}.")
-  customer node['dynect']['customer']
-  username node['dynect']['username']
-  password node['dynect']['password']
+  customer creds['customer']
+  username creds['username']
+  password creds['password']
   zone node['dynect']['zone']
   action :update
 end

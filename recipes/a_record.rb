@@ -18,14 +18,17 @@
 #
 
 include_recipe 'dynect'
+extend Dynect::Helper
+
+creds = get_credentials
 
 dynect_rr node['hostname'] do
   record_type 'A'
   rdata('address' => node['ipaddress'])
   fqdn "#{node['hostname']}.#{node['dynect']['domain']}"
-  customer node['dynect']['customer']
-  username node['dynect']['username']
-  password node['dynect']['password']
+  customer creds['customer']
+  username creds['username']
+  password creds['password']
   zone node['dynect']['zone']
   action :update
 end
