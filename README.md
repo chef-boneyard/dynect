@@ -28,28 +28,16 @@ Attributes
 ----------
 The following attributes need to be set either in a role or on a node directly, they are not set at the cookbook level:
 
-* dynect.customer - Customer ID
-* dynect.username - Username
-* dynect.password - Password
-* dynect.zone - Zone
-* dynect.domain - Domain
-
-Example JSON:
-
-    {
-      "dynect": {
-        "customer": "CUSTOMER",
-        "username": "USERNAME",
-        "password": "PASSWORD",
-        "zone": "ZONE",
-        "domain": "DOMAIN"
-      }
-    }
+* `node['dynect']['customer']` - Customer ID
+* `node['dynect']['username']` - Username
+* `node['dynect']['password']` - Password
+* `node['dynect']['zone']`- Zone
+* `node['dynect']['domain']` - Domain
 
 EC2 specific attributes:
 
-* dynect.ec2.type - type of system, web, db, etc. Default is 'ec2'.
-* dynect.ec2.env - logical application environment the system is in. Default is 'prod'.
+* `node['dynect']['ec2']['type']` - type of system, web, db, etc. Default is 'ec2'.
+* `node['dynect']['ec2']['env']` - logical application environment the system is in. Default is 'prod'.
 
 RESOURCES
 ---------
@@ -85,11 +73,11 @@ Example:
     dynect_rr "webprod" do
       record_type "A"
       rdata({"address" => "10.1.1.10"})
-      fqdn "webprod.#{node.dynect.domain}"
-      customer node[:dynect][:customer]
-      username node[:dynect][:username]
-      password node[:dynect][:password]
-      zone     node[:dynect][:zone]
+      fqdn "webprod.#{node['dynect']['domain']}"
+      customer node['dynect']['customer']
+      username node['dynect']['username']
+      password node['dynect']['password']
+      zone     node['dynect']['zone']
     end
 
 RECIPES
@@ -105,7 +93,7 @@ The default recipe installs Adam Jacob's `dynect_rest` gem during the Chef run's
 
 **Only use this recipe on Amazon AWS EC2 hosts!**
 
-The `dynect::ec2` recipe provides an example of working with the Dyn API with EC2 instances. It creates CNAME records based on the EC2 instance ID (`node.ec2.instance_id`), and a constructed hostname from the dynect.ec2 attributes.
+The `dynect::ec2` recipe provides an example of working with the Dyn API with EC2 instances. It creates CNAME records based on the EC2 instance ID (`node['ec2']['instance_id']`), and a constructed hostname from the dynect.ec2 attributes.
 
 The recipe also edits `/etc/resolv.conf` to search `compute-1.internal` and the dynect.domain and use dynect.domain as the default domain, and it will set the nodes hostname per the DNS settings.
 
@@ -131,7 +119,7 @@ License & Authors
 
 **Author:** Cookbook Engineering Team (<cookbooks@chef.io>)
 
-**Copyright:** 2008-2015, Chef Software, Inc.
+**Copyright:** 2008-2016, Chef Software, Inc.
 ```
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
