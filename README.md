@@ -1,41 +1,41 @@
-dynect Cookbook
-===============
+# dynect Cookbook
 
-[![Build Status](https://travis-ci.org/chef-cookbooks/dynect.svg?branch=master)](https://travis-ci.org/chef-cookbooks/dynect)
-[![Cookbook Version](https://img.shields.io/cookbook/v/dynect.svg)](https://supermarket.chef.io/cookbooks/dynect)
-
+[![Build Status](https://travis-ci.org/chef-cookbooks/dynect.svg?branch=master)](https://travis-ci.org/chef-cookbooks/dynect) [![Cookbook Version](https://img.shields.io/cookbook/v/dynect.svg)](https://supermarket.chef.io/cookbooks/dynect)
 
 Automatically configures system DNS using Dyn's API.
 
 ## Requirements
+
 ### Platforms
+
 - All platforms supported by Chef
 
 ### Chef
+
 - Chef 11+
 
 ### Cookbooks
-- none
 
+- none
 
 A Dynect account.
 
-The `dynect_rest` gem. The `dynect::default` recipe installs this gem from http://rubygems.org
-
+The `dynect_rest` gem. The `dynect::default` recipe installs this gem from <http://rubygems.org>
 
 ## Attributes
+
 The following attributes need to be set for the cookbookt to function. `Note`: These are rather sensitive attributes so it's advised that you store these in a secure location such as an encrypted databag and set them via a wrapper cookbook.
 
-* `node['dynect']['customer']` - Customer ID
-* `node['dynect']['username']` - Username
-* `node['dynect']['password']` - Password
-* `node['dynect']['zone']`- Zone
-* `node['dynect']['domain']` - Domain
+- `node['dynect']['customer']` - Customer ID
+- `node['dynect']['username']` - Username
+- `node['dynect']['password']` - Password
+- `node['dynect']['zone']`- Zone
+- `node['dynect']['domain']` - Domain
 
 EC2 specific attributes:
 
-* `node['dynect']['ec2']['type']` - type of system, web, db, etc. Default is 'ec2'.
-* `node['dynect']['ec2']['env']` - logical application environment the system is in. Default is 'prod'.
+- `node['dynect']['ec2']['type']` - type of system, web, db, etc. Default is 'ec2'.
+- `node['dynect']['ec2']['env']` - logical application environment the system is in. Default is 'prod'.
 
 ## Custom Resources
 
@@ -47,21 +47,21 @@ Actions:
 
 Applies to the DNS record being managed.
 
-* `:create`
-* `:replace`
-* `:update`
-* `:delete`
+- `:create`
+- `:replace`
+- `:update`
+- `:delete`
 
 Attribute Parameters:
 
-* `record_type` - DNS record type (CNAME, A, etc)
-* `rdata` - record data, see the Dyn API documentation.
-* `ttl` - time to live in seconds
-* `fqdn` - fully qualified domain name
-* `username` - dyn username
-* `password` - dyn password
-* `customer` - dyn customer id
-* `zone` - DNS zone
+- `record_type` - DNS record type (CNAME, A, etc)
+- `rdata` - record data, see the Dyn API documentation.
+- `ttl` - time to live in seconds
+- `fqdn` - fully qualified domain name
+- `username` - dyn username
+- `password` - dyn password
+- `customer` - dyn customer id
+- `zone` - DNS zone
 
 None of the parameters have default values.
 
@@ -103,19 +103,19 @@ The `dynect::a_record` recipe will create an `A` record for the node using the d
 
 Information on the Dynect API:
 
-* [PDF](http://cdn.dyndns.com/pdf/Dynect-API.pdf)
+- [PDF](http://cdn.dyndns.com/pdf/Dynect-API.pdf)
 
 Dynect REST Ruby Library:
 
-* [Gem](http://rubygems.org/gems/dynect_rest)
-* [Code](http://github.com/adamhjk/dynect_rest)
-
+- [Gem](http://rubygems.org/gems/dynect_rest)
+- [Code](http://github.com/adamhjk/dynect_rest)
 
 ## License & Authors
 
-**Author:** Cookbook Engineering Team (<cookbooks@chef.io>)
+**Author:** Cookbook Engineering Team ([cookbooks@chef.io](mailto:cookbooks@chef.io))
 
 **Copyright:** 2008-2016, Chef Software, Inc.
+
 ```
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
