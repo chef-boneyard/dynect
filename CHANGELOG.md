@@ -2,6 +2,15 @@
 
 This file is used to list changes made in each version of the dynect cookbook.
 
+## v1.0.11 (2016-03-15)
+
+- Improved documentation for setting attributes. Added recommendation for setting attributes in a secure fashion via a wrapper cookbook
+- Added a .foodcritic file to exclude FC059 for now
+- Added long_description to the metadata
+- Added additional Chefspec testing
+- Updated Rubocop config to 0.38 format
+- Updated testing deps and removed cloud deps
+
 ## v1.0.10 (2015-10-20)
 
 - Updated the requirements section of the readme to make the minimum supported Chef release 11 not 0.8
