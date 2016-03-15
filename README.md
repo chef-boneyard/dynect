@@ -7,15 +7,14 @@ dynect Cookbook
 
 Automatically configures system DNS using Dyn's API.
 
-Requirements
-------------
-#### Platforms
+## Requirements
+### Platforms
 - All platforms supported by Chef
 
-#### Chef
+### Chef
 - Chef 11+
 
-#### Cookbooks
+### Cookbooks
 - none
 
 
@@ -24,9 +23,8 @@ A Dynect account.
 The `dynect_rest` gem. The `dynect::default` recipe installs this gem from http://rubygems.org
 
 
-Attributes
-----------
-The following attributes need to be set either in a role or on a node directly, they are not set at the cookbook level:
+## Attributes
+The following attributes need to be set for the cookbookt to function. `Note`: These are rather sensitive attributes so it's advised that you store these in a secure location such as an encrypted databag and set them via a wrapper cookbook.
 
 * `node['dynect']['customer']` - Customer ID
 * `node['dynect']['username']` - Username
@@ -39,10 +37,9 @@ EC2 specific attributes:
 * `node['dynect']['ec2']['type']` - type of system, web, db, etc. Default is 'ec2'.
 * `node['dynect']['ec2']['env']` - logical application environment the system is in. Default is 'prod'.
 
-RESOURCES
----------
+## Custom Resources
 
-###rr
+### rr
 
 DNS Resource Record.
 
@@ -70,26 +67,27 @@ None of the parameters have default values.
 
 Example:
 
-    dynect_rr "webprod" do
-      record_type "A"
-      rdata({"address" => "10.1.1.10"})
-      fqdn "webprod.#{node['dynect']['domain']}"
-      customer node['dynect']['customer']
-      username node['dynect']['username']
-      password node['dynect']['password']
-      zone     node['dynect']['zone']
-    end
+```ruby
+dynect_rr "webprod" do
+    record_type "A"
+    rdata({"address" => "10.1.1.10"})
+    fqdn "webprod.#{node['dynect']['domain']}"
+    customer node['dynect']['customer']
+    username node['dynect']['username']
+    password node['dynect']['password']
+    zone     node['dynect']['zone']
+end
+```
 
-RECIPES
--------
+## Recipes
 
 This cookbook provides the following recipes.
 
-###default
+### default
 
 The default recipe installs Adam Jacob's `dynect_rest` gem during the Chef run's compile time to ensure it is available in the same run as utilizing the `dynect_rr` resource/provider.
 
-###ec2
+### ec2
 
 **Only use this recipe on Amazon AWS EC2 hosts!**
 
@@ -97,12 +95,11 @@ The `dynect::ec2` recipe provides an example of working with the Dyn API with EC
 
 The recipe also edits `/etc/resolv.conf` to search `compute-1.internal` and the dynect.domain and use dynect.domain as the default domain, and it will set the nodes hostname per the DNS settings.
 
-###a_record
+### a_record
 
 The `dynect::a_record` recipe will create an `A` record for the node using the detected hostname and IP address from `ohai`.
 
-FURTHER READING
----------------
+## Further Reading
 
 Information on the Dynect API:
 
@@ -114,8 +111,7 @@ Dynect REST Ruby Library:
 * [Code](http://github.com/adamhjk/dynect_rest)
 
 
-License & Authors
------------------
+## License & Authors
 
 **Author:** Cookbook Engineering Team (<cookbooks@chef.io>)
 
