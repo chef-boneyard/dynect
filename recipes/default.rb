@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+include_recipe 'build-essential::default'
+
 # Install dynect gem for usage within Chef runs
 chef_gem 'dynect_rest' do
   action :install
