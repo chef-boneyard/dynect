@@ -2,7 +2,7 @@
 # Cookbook Name:: dynect
 # Recipe:: ec2
 #
-# Copyright:: 2010, Opscode, Inc <legal@opscode.com>
+# Copyright:: 2010-2016, Cherf Software, Inc <legal@chef.io>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

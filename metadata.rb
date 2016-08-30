@@ -12,3 +12,4 @@ recipe 'dynect::a_record', 'Example resource usage to configure an A record'
 
 source_url 'https://github.com/chef-cookbooks/dynect' if respond_to?(:source_url)
 issues_url 'https://github.com/chef-cookbooks/dynect/issues' if respond_to?(:issues_url)
+chef_version '>= 11' if respond_to?(:chef_version)
