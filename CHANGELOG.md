@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of the dynect cookbook.
 
+## 1.1.0 (2016-08-30)
+
+- Use build-essential to make sure the gem can compile in the default recipe
+- Disable compile-time installation of the gem in the default recipe
+
 ## v1.0.11 (2016-03-15)
 
 - Improved documentation for setting attributes. Added recommendation for setting attributes in a secure fashion via a wrapper cookbook
