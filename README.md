@@ -12,7 +12,7 @@ Automatically configures system DNS using Dyn's API.
 
 ### Chef
 
-- Chef 11+
+- Chef 12.1+
 
 ### Cookbooks
 
