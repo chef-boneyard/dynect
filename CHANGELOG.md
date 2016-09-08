@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the dynect cookbook.
 
+## 2.0.0 (2016-09-08)
+
+- Require Chef 12
+
 ## 1.1.0 (2016-08-30)
 
 - Use build-essential to make sure the gem can compile in the default recipe
