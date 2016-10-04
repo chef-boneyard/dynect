@@ -22,5 +22,5 @@ include_recipe 'build-essential::default'
 # Install dynect gem for usage within Chef runs
 chef_gem 'dynect_rest' do
   action :install
-  compile_time false if Chef::Resource::ChefGem.method_defined?(:compile_time)
+  compile_time false
 end
