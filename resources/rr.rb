@@ -1,9 +1,9 @@
 #
-# Cookbook Name:: dynect
+# Cookbook:: dynect
 # Resource:: rr
 #
 # Author:: Adam Jacob <adam@opscode.com>
-# Copyright:: 2010, Opscode, Inc <legal@opscode.com>
+# Copyright:: 2010-2016, Chef Software, Inc <legal@opscode.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: dynect
+# Cookbook:: dynect
 # Recipe:: ec2
 #
 # Copyright:: 2010-2016, Cherf Software, Inc <legal@chef.io>

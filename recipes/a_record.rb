@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: dynect
+# Cookbook:: dynect
 # Recipe:: a_record
 #
 # Copyright:: 2010-2016, Chef Software, Inc <legal@chef.io>
