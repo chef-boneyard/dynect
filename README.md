@@ -24,7 +24,7 @@ The `dynect_rest` gem. The `dynect::default` recipe installs this gem from <http
 
 ## Attributes
 
-The following attributes need to be set for the cookbookt to function. `Note`: These are rather sensitive attributes so it's advised that you store these in a secure location such as an encrypted databag and set them via a wrapper cookbook.
+The following attributes need to be set for the cookbook to function. `Note`: These are rather sensitive attributes so it's advised that you store these in a secure location such as an encrypted databag and set them via a wrapper cookbook.
 
 - `node['dynect']['customer']` - Customer ID
 - `node['dynect']['username']` - Username
