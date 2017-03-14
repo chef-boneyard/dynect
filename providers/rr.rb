@@ -43,16 +43,15 @@ def load_current_resource
 end
 
 def action_create
-  unless @rr
-    rr = DynectRest::Resource.new(@dyn, @new_resource.record_type, @new_resource.zone)
-    rr.fqdn(@new_resource.fqdn)
-    rr.ttl(@new_resource.ttl) if @new_resource.ttl
-    rr.rdata = @new_resource.rdata
-    rr.save
-    @dyn.publish
-    Chef::Log.info("Added #{@new_resource} to dynect")
-    new_resource.updated_by_last_action(true)
-  end
+  return if @rr
+  rr = DynectRest::Resource.new(@dyn, @new_resource.record_type, @new_resource.zone)
+  rr.fqdn(@new_resource.fqdn)
+  rr.ttl(@new_resource.ttl) if @new_resource.ttl
+  rr.rdata = @new_resource.rdata
+  rr.save
+  @dyn.publish
+  Chef::Log.info("Added #{@new_resource} to dynect")
+  new_resource.updated_by_last_action(true)
 end
 
 def action_update
@@ -91,10 +90,9 @@ def action_replace
 end
 
 def action_delete
-  if @rr
-    @rr.delete
-    @dyn.publish
-    Chef::Log.info("Deleted #{@new_resource} from dynect")
-    new_resource.updated_by_last_action(true)
-  end
+  return unless @rr
+  @rr.delete
+  @dyn.publish
+  Chef::Log.info("Deleted #{@new_resource} from dynect")
+  new_resource.updated_by_last_action(true)
 end
