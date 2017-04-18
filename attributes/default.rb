@@ -25,5 +25,21 @@
 # set[:dynect][:zone] = ""
 # set[:dynect][:domain] = ""
 #
+# Instead of setting the attributes directly, you can use
+# an encrypted databag instead. If :data_bag_name is not empty,
+# the cookbook will switch to using the data bag method.
+#
+# set[:dynect][:data_bag_name] = 'passwords'
+# set[:dynect][:data_bag_item] = 'dynect'
+#
+# The data bag item would be formatted like this:
+#
+# {
+#   "id": "dynect",
+#   "customer": "",
+#   "username": "",
+#   "password": ""
+# }
+#
 # set[:dynect][:ec2][:type] = "ec2"
 # set[:dynect][:ec2][:env]  = "prod"
