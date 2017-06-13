@@ -22,7 +22,7 @@ def load_current_resource
 
   @dyn = DynectRest.new(@new_resource.customer, @new_resource.username, @new_resource.password, @new_resource.zone)
 
-  @current_resource = Chef::Resource::DynectRr.new(@new_resource.name)
+  @current_resource = new_resource.class.new(@new_resource.name)
   @current_resource.record_type(@new_resource.record_type)
   @current_resource.customer(@new_resource.customer)
   @current_resource.username(@new_resource.username)
@@ -44,34 +44,31 @@ end
 
 def action_create
   return if @rr
-  rr = DynectRest::Resource.new(@dyn, @new_resource.record_type, @new_resource.zone)
-  rr.fqdn(@new_resource.fqdn)
-  rr.ttl(@new_resource.ttl) if @new_resource.ttl
-  rr.rdata = @new_resource.rdata
-  rr.save
-  @dyn.publish
-  Chef::Log.info("Added #{@new_resource} to dynect")
-  new_resource.updated_by_last_action(true)
+  converge_by("added #{@new_resource} to dynect") do
+    rr = DynectRest::Resource.new(@dyn, @new_resource.record_type, @new_resource.zone)
+    rr.fqdn(@new_resource.fqdn)
+    rr.ttl(@new_resource.ttl) if @new_resource.ttl
+    rr.rdata = @new_resource.rdata
+    rr.save
+    @dyn.publish
+  end
 end
 
 def action_update
   if @rr
-    changed = false
     if @new_resource.ttl && @rr.ttl != @new_resource.ttl
-      @rr.ttl(@new_resource.ttl)
-      Chef::Log.info("Changing #{@new_resource} ttl from #{@rr.ttl} to #{@new_resource.ttl}")
-      changed = true
+      converge_by("changed #{@new_resource} ttl from #{@rr.ttl} to #{@new_resource.ttl}") do
+        @rr.ttl(@new_resource.ttl)
+        @rr.save
+        @dyn.publish
+      end
     end
     if @rr.rdata != @new_resource.rdata
-      Chef::Log.info("Changing #{@new_resource} rdata from #{@rr.rdata.inspect} to #{@new_resource.rdata.inspect}")
-      @rr.rdata = @new_resource.rdata
-      changed = true
-    end
-    if changed
-      @rr.save
-      @dyn.publish
-      Chef::Log.info("Updated #{@new_resource} at dynect")
-      new_resource.updated_by_last_action(true)
+      converge_by("changed #{@new_resource} rdata from #{@rr.rdata.inspect} to #{@new_resource.rdata.inspect}") do
+        @rr.rdata = @new_resource.rdata
+        @rr.save
+        @dyn.publish
+      end
     end
   else
     action_create
@@ -79,20 +76,20 @@ def action_update
 end
 
 def action_replace
-  rr = DynectRest::Resource.new(@dyn, @new_resource.record_type, @new_resource.zone)
-  rr.fqdn(@new_resource.fqdn)
-  rr.ttl(@new_resource.ttl) if @new_resource.ttl
-  rr.rdata = @new_resource.rdata
-  rr.save(true)
-  @dyn.publish
-  Chef::Log.info("Replaced #{@new_resource} at dynect")
-  new_resource.updated_by_last_action(true)
+  converge_by("replace #{@new_resource} at dynect") do
+    rr = DynectRest::Resource.new(@dyn, @new_resource.record_type, @new_resource.zone)
+    rr.fqdn(@new_resource.fqdn)
+    rr.ttl(@new_resource.ttl) if @new_resource.ttl
+    rr.rdata = @new_resource.rdata
+    rr.save(true)
+    @dyn.publish
+  end
 end
 
 def action_delete
   return unless @rr
-  @rr.delete
-  @dyn.publish
-  Chef::Log.info("Deleted #{@new_resource} from dynect")
-  new_resource.updated_by_last_action(true)
+  converge_by("delete #{@new_resource} from dynect") do
+    @rr.delete
+    @dyn.publish
+  end
 end
