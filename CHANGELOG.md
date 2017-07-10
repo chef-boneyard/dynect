@@ -2,6 +2,17 @@
 
 This file is used to list changes made in each version of the dynect cookbook.
 
+## 2.1.0 (2017-07-09)
+
+- Remove chef 11 compatibility in chef_gem
+- Update apache2 license string
+- Add various platforms to the metadata
+- Use converge_by and load current_resource properly
+- Testing updates
+- Update maintainers docs
+- Dont' fail to parse metadata on older chef client releases
+- Make sure we have build-essential installed at compile_time by setting the compile time attribute in the build-essential cookbook
+
 ## 2.0.0 (2016-09-08)
 
 - Require Chef 12
