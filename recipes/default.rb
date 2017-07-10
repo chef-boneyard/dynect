@@ -17,6 +17,9 @@
 # limitations under the License.
 #
 
+# required so we have build-essential packages when we compile the gem
+node.override['build-essential']['compile_time'] = true
+
 include_recipe 'build-essential::default'
 
 # Install dynect gem for usage within Chef runs
