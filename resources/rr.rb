@@ -19,6 +19,7 @@
 #
 
 actions :delete, :create, :update, :replace
+default_action :create
 
 attribute :record_type, kind_of: String
 attribute :rdata, kind_of: Hash
@@ -28,5 +29,3 @@ attribute :username, kind_of: String
 attribute :password, kind_of: String
 attribute :customer, kind_of: String
 attribute :zone, kind_of: String
-
-default_action :create
