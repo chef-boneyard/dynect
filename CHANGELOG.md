@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of the dynect cookbook.
 
+## 2.2.0 (2018-05-14)
+
+- Use Bento slugs in Kitchen
+- More cleanup of the maintainer files
+- Use dokken images and fix suites
+- Require build-essential 5.0 and use the resource directly
+
 ## 2.1.0 (2017-07-09)
 
 - Remove chef 11 compatibility in chef_gem
