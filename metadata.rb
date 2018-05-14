@@ -10,7 +10,7 @@ recipe 'dynect', 'Installs the dynect_rest RubyGem'
 recipe 'dynect::ec2', 'Dynamically configures Dyn resource records for EC2 nodes based on instance ID and prepopulated attributes on the node'
 recipe 'dynect::a_record', 'Example resource usage to configure an A record'
 
-depends 'build-essential'
+depends 'build-essential', '>= 5.0'
 
 %w(redhat centos scientific oracle fedora ubuntu debian linuxmint suse opensuse opensuseleap freebsd netbsd mac_os_x
    solaris2 gentoo arch nexus).each do |platform|

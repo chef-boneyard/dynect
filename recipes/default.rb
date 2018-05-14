@@ -20,7 +20,7 @@
 # required so we have build-essential packages when we compile the gem
 node.override['build-essential']['compile_time'] = true
 
-include_recipe 'build-essential::default'
+build_essential 'install compilation tools'
 
 # Install dynect gem for usage within Chef runs
 chef_gem 'dynect_rest' do
