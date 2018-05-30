@@ -2,7 +2,7 @@
 # Cookbook:: dynect
 # Recipe:: default
 #
-# Copyright:: 2010-2016, Chef Software, Inc <legal@chef.io>
+# Copyright:: 2010-2018, Chef Software, Inc <legal@chef.io>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,10 +17,9 @@
 # limitations under the License.
 #
 
-# required so we have build-essential packages when we compile the gem
-node.override['build-essential']['compile_time'] = true
-
-build_essential 'install compilation tools'
+build_essential 'install compilation tools' do
+  compile_time true
+end
 
 # Install dynect gem for usage within Chef runs
 chef_gem 'dynect_rest' do
