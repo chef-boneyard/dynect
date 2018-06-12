@@ -12,11 +12,10 @@ recipe 'dynect::a_record', 'Example resource usage to configure an A record'
 
 depends 'build-essential', '>= 5.0'
 
-%w(redhat centos scientific oracle fedora ubuntu debian linuxmint suse opensuse opensuseleap freebsd netbsd mac_os_x
-   solaris2 gentoo arch nexus).each do |platform|
+%w(redhat centos scientific oracle fedora ubuntu debian linuxmint suse opensuse opensuseleap freebsd netbsd mac_os_x solaris2 gentoo arch nexus).each do |platform|
   supports platform
 end
 
 source_url 'https://github.com/chef-cookbooks/dynect'
 issues_url 'https://github.com/chef-cookbooks/dynect/issues'
-chef_version '>= 12.1' if respond_to?(:chef_version)
+chef_version '>= 12.7' if respond_to?(:chef_version)

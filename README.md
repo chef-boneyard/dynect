@@ -37,7 +37,7 @@ EC2 specific attributes:
 - `node['dynect']['ec2']['type']` - type of system, web, db, etc. Default is 'ec2'.
 - `node['dynect']['ec2']['env']` - logical application environment the system is in. Default is 'prod'.
 
-## Custom Resources
+## Resources
 
 ### rr
 
@@ -52,7 +52,7 @@ Applies to the DNS record being managed.
 - `:update`
 - `:delete`
 
-Attribute Parameters:
+Properties:
 
 - `record_type` - DNS record type (CNAME, A, etc)
 - `rdata` - record data, see the Dyn API documentation.
@@ -63,7 +63,7 @@ Attribute Parameters:
 - `customer` - dyn customer id
 - `zone` - DNS zone
 
-None of the parameters have default values.
+None of the properties have default values.
 
 Example:
 
