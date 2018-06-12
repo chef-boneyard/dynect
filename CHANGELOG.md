@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of the dynect cookbook.
 
+## 3.0.0 (2018-06-11)
+
+- Convert the resource to a custom resource which raises the minimum supported Chef release to 12.7
+
 ## 2.2.0 (2018-05-14)
 
 - Use Bento slugs in Kitchen
