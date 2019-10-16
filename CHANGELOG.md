@@ -2,6 +2,13 @@
 
 This file is used to list changes made in each version of the dynect cookbook.
 
+## 4.0.0 (2019-10-16)
+
+- Fixes from Cookstyle 5.8 and Chef 15 licensing support in test - [@tas50](https://github.com/tas50)
+- Update copyrights to current - [@tas50](https://github.com/tas50)
+- Update the systems we test on - [@tas50](https://github.com/tas50)
+- Require Chef 14+ and remove the build-essential dependency - [@tas50](https://github.com/tas50)
+
 ## 3.0.0 (2018-06-11)
 
 - Convert the resource to a custom resource which raises the minimum supported Chef release to 12.7
